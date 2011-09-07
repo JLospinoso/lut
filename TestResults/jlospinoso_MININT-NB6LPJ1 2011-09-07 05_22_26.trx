@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="210dbada-5050-4cc5-bc78-762e21e21357" name="jlospinoso@MININT-NB6LPJ1 2011-09-07 05:22:26" runUser="MININT-NB6LPJ1\jlospinoso" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="99f50d2e-97f5-4646-a5c0-bb5ad7daee8b">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="jlospinoso_MININT-NB6LPJ1 2011-09-07 05_22_26">
+      <DeploymentItem filename="c:\users\jlospinoso\documents\visual studio 2010\Projects\LUT\Utils\bin\Debug\LospiUtils.dll" />
+      <DeploymentItem filename="c:\users\jlospinoso\documents\visual studio 2010\Projects\LUT\Lib\MathNet.Iridium.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-09-07T05:22:26.8833669-04:00" queuing="2011-09-07T05:22:26.9633715-04:00" start="2011-09-07T05:22:26.9703719-04:00" finish="2011-09-07T05:22:27.2943904-04:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="9" executed="9" passed="9" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="ScaleTest" storage="c:\users\jlospinoso\documents\visual studio 2010\projects\lut\utils.test\bin\debug\utilstest.dll" id="1015d3f6-0226-3b5c-bb67-a634ddeb31d1">
+      <Execution id="143a0840-7894-40d2-8a83-b6ef6bff74eb" />
+      <TestMethod codeBase="c:/users/jlospinoso/documents/visual studio 2010/Projects/LUT/Utils.Test/bin/Debug/UtilsTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Lospi.Utils.Test.ExtensionMethodsTest, UtilsTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ScaleTest" />
+    </UnitTest>
+    <UnitTest name="VarianceTest" storage="c:\users\jlospinoso\documents\visual studio 2010\projects\lut\utils.test\bin\debug\utilstest.dll" id="344d4a04-286c-d3d4-fb42-2a5639e4e1a3">
+      <Execution id="0fe9bf7a-07e3-492b-8efe-4bc537585cc5" />
+      <TestMethod codeBase="c:/users/jlospinoso/documents/visual studio 2010/Projects/LUT/Utils.Test/bin/Debug/UtilsTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Lospi.Utils.Test.StatisticalExtensionMethodsTest, UtilsTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="VarianceTest" />
+    </UnitTest>
+    <UnitTest name="PercentileTest" storage="c:\users\jlospinoso\documents\visual studio 2010\projects\lut\utils.test\bin\debug\utilstest.dll" id="19b43299-b7be-1f16-99d9-13f94a42bbe5">
+      <Execution id="58227fa6-7115-4719-bf46-fe703b134c47" />
+      <TestMethod codeBase="c:/users/jlospinoso/documents/visual studio 2010/Projects/LUT/Utils.Test/bin/Debug/UtilsTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Lospi.Utils.Test.ExtensionMethodsTest, UtilsTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="PercentileTest" />
+    </UnitTest>
+    <UnitTest name="SortOnKeysTest" storage="c:\users\jlospinoso\documents\visual studio 2010\projects\lut\utils.test\bin\debug\utilstest.dll" id="f5896814-dba8-fd25-5554-d62d3fbce816">
+      <Execution id="559359da-2813-44eb-9f19-35091aa09808" />
+      <TestMethod codeBase="c:/users/jlospinoso/documents/visual studio 2010/Projects/LUT/Utils.Test/bin/Debug/UtilsTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Lospi.Utils.Test.ExtensionMethodsTest, UtilsTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="SortOnKeysTest" />
+    </UnitTest>
+    <UnitTest name="StandardizeTest" storage="c:\users\jlospinoso\documents\visual studio 2010\projects\lut\utils.test\bin\debug\utilstest.dll" id="b460e44c-e3ed-1931-af80-41434bca3183">
+      <Execution id="f814542d-9428-4825-b13c-3cdc9e8cb5fc" />
+      <TestMethod codeBase="c:/users/jlospinoso/documents/visual studio 2010/Projects/LUT/Utils.Test/bin/Debug/UtilsTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Lospi.Utils.Test.ExtensionMethodsTest, UtilsTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="StandardizeTest" />
+    </UnitTest>
+    <UnitTest name="NormalizeTest" storage="c:\users\jlospinoso\documents\visual studio 2010\projects\lut\utils.test\bin\debug\utilstest.dll" id="60188dd3-c6f2-7476-afa1-aa6a6c58b03a">
+      <Execution id="1ea1f35c-08a2-40c6-bb3d-727834da0ba5" />
+      <TestMethod codeBase="c:/users/jlospinoso/documents/visual studio 2010/Projects/LUT/Utils.Test/bin/Debug/UtilsTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Lospi.Utils.Test.ExtensionMethodsTest, UtilsTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="NormalizeTest" />
+    </UnitTest>
+    <UnitTest name="StandardDeviationTest" storage="c:\users\jlospinoso\documents\visual studio 2010\projects\lut\utils.test\bin\debug\utilstest.dll" id="9d182dc4-ff89-12a4-7ff6-fb1017432989">
+      <Execution id="9a68ae9e-94ec-44e5-8789-69159c82f3d7" />
+      <TestMethod codeBase="c:/users/jlospinoso/documents/visual studio 2010/Projects/LUT/Utils.Test/bin/Debug/UtilsTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Lospi.Utils.Test.StatisticalExtensionMethodsTest, UtilsTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="StandardDeviationTest" />
+    </UnitTest>
+    <UnitTest name="RankTest" storage="c:\users\jlospinoso\documents\visual studio 2010\projects\lut\utils.test\bin\debug\utilstest.dll" id="f57d43ee-bf95-9022-b722-c3aa89dcff4f">
+      <Execution id="15c45114-41bb-4eeb-a9e6-60d3cc738014" />
+      <TestMethod codeBase="c:/users/jlospinoso/documents/visual studio 2010/Projects/LUT/Utils.Test/bin/Debug/UtilsTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Lospi.Utils.Test.ExtensionMethodsTest, UtilsTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RankTest" />
+    </UnitTest>
+    <UnitTest name="RangeTest" storage="c:\users\jlospinoso\documents\visual studio 2010\projects\lut\utils.test\bin\debug\utilstest.dll" id="2c51df45-7bf5-a2d1-64d3-a24338af5074">
+      <Execution id="2b193798-999b-40fc-977b-2e7cd880f234" />
+      <TestMethod codeBase="c:/users/jlospinoso/documents/visual studio 2010/Projects/LUT/Utils.Test/bin/Debug/UtilsTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Lospi.Utils.Test.ExtensionMethodsTest, UtilsTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RangeTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="1015d3f6-0226-3b5c-bb67-a634ddeb31d1" executionId="143a0840-7894-40d2-8a83-b6ef6bff74eb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="19b43299-b7be-1f16-99d9-13f94a42bbe5" executionId="58227fa6-7115-4719-bf46-fe703b134c47" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2c51df45-7bf5-a2d1-64d3-a24338af5074" executionId="2b193798-999b-40fc-977b-2e7cd880f234" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="344d4a04-286c-d3d4-fb42-2a5639e4e1a3" executionId="0fe9bf7a-07e3-492b-8efe-4bc537585cc5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="60188dd3-c6f2-7476-afa1-aa6a6c58b03a" executionId="1ea1f35c-08a2-40c6-bb3d-727834da0ba5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9d182dc4-ff89-12a4-7ff6-fb1017432989" executionId="9a68ae9e-94ec-44e5-8789-69159c82f3d7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b460e44c-e3ed-1931-af80-41434bca3183" executionId="f814542d-9428-4825-b13c-3cdc9e8cb5fc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f57d43ee-bf95-9022-b722-c3aa89dcff4f" executionId="15c45114-41bb-4eeb-a9e6-60d3cc738014" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f5896814-dba8-fd25-5554-d62d3fbce816" executionId="559359da-2813-44eb-9f19-35091aa09808" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="143a0840-7894-40d2-8a83-b6ef6bff74eb" testId="1015d3f6-0226-3b5c-bb67-a634ddeb31d1" testName="ScaleTest" computerName="MININT-NB6LPJ1" duration="00:00:00.0124865" startTime="2011-09-07T05:22:26.9973734-04:00" endTime="2011-09-07T05:22:27.2053853-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="143a0840-7894-40d2-8a83-b6ef6bff74eb">
+    </UnitTestResult>
+    <UnitTestResult executionId="58227fa6-7115-4719-bf46-fe703b134c47" testId="19b43299-b7be-1f16-99d9-13f94a42bbe5" testName="PercentileTest" computerName="MININT-NB6LPJ1" duration="00:00:00.0027276" startTime="2011-09-07T05:22:27.2083855-04:00" endTime="2011-09-07T05:22:27.2143858-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="58227fa6-7115-4719-bf46-fe703b134c47">
+    </UnitTestResult>
+    <UnitTestResult executionId="2b193798-999b-40fc-977b-2e7cd880f234" testId="2c51df45-7bf5-a2d1-64d3-a24338af5074" testName="RangeTest" computerName="MININT-NB6LPJ1" duration="00:00:00.0131867" startTime="2011-09-07T05:22:27.2163859-04:00" endTime="2011-09-07T05:22:27.2333869-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2b193798-999b-40fc-977b-2e7cd880f234">
+    </UnitTestResult>
+    <UnitTestResult executionId="0fe9bf7a-07e3-492b-8efe-4bc537585cc5" testId="344d4a04-286c-d3d4-fb42-2a5639e4e1a3" testName="VarianceTest" computerName="MININT-NB6LPJ1" duration="00:00:00.0011598" startTime="2011-09-07T05:22:27.2353870-04:00" endTime="2011-09-07T05:22:27.2403873-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0fe9bf7a-07e3-492b-8efe-4bc537585cc5">
+    </UnitTestResult>
+    <UnitTestResult executionId="1ea1f35c-08a2-40c6-bb3d-727834da0ba5" testId="60188dd3-c6f2-7476-afa1-aa6a6c58b03a" testName="NormalizeTest" computerName="MININT-NB6LPJ1" duration="00:00:00.0067086" startTime="2011-09-07T05:22:27.2433875-04:00" endTime="2011-09-07T05:22:27.2523880-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1ea1f35c-08a2-40c6-bb3d-727834da0ba5">
+    </UnitTestResult>
+    <UnitTestResult executionId="9a68ae9e-94ec-44e5-8789-69159c82f3d7" testId="9d182dc4-ff89-12a4-7ff6-fb1017432989" testName="StandardDeviationTest" computerName="MININT-NB6LPJ1" duration="00:00:00.0006986" startTime="2011-09-07T05:22:27.2553882-04:00" endTime="2011-09-07T05:22:27.2583883-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9a68ae9e-94ec-44e5-8789-69159c82f3d7">
+    </UnitTestResult>
+    <UnitTestResult executionId="f814542d-9428-4825-b13c-3cdc9e8cb5fc" testId="b460e44c-e3ed-1931-af80-41434bca3183" testName="StandardizeTest" computerName="MININT-NB6LPJ1" duration="00:00:00.0011755" startTime="2011-09-07T05:22:27.2613885-04:00" endTime="2011-09-07T05:22:27.2643887-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f814542d-9428-4825-b13c-3cdc9e8cb5fc">
+    </UnitTestResult>
+    <UnitTestResult executionId="15c45114-41bb-4eeb-a9e6-60d3cc738014" testId="f57d43ee-bf95-9022-b722-c3aa89dcff4f" testName="RankTest" computerName="MININT-NB6LPJ1" duration="00:00:00.0045276" startTime="2011-09-07T05:22:27.2663888-04:00" endTime="2011-09-07T05:22:27.2733892-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="15c45114-41bb-4eeb-a9e6-60d3cc738014">
+    </UnitTestResult>
+    <UnitTestResult executionId="559359da-2813-44eb-9f19-35091aa09808" testId="f5896814-dba8-fd25-5554-d62d3fbce816" testName="SortOnKeysTest" computerName="MININT-NB6LPJ1" duration="00:00:00.0016163" startTime="2011-09-07T05:22:27.2753893-04:00" endTime="2011-09-07T05:22:27.2793895-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="559359da-2813-44eb-9f19-35091aa09808">
+    </UnitTestResult>
+  </Results>
+</TestRun>

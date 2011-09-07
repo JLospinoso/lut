@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="c80cfda2-0e79-4b2c-8cd8-f9ee45ceb2a3" name="jlospinoso@MININT-NB6LPJ1 2011-09-07 05:08:37" runUser="MININT-NB6LPJ1\jlospinoso" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="99f50d2e-97f5-4646-a5c0-bb5ad7daee8b">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="jlospinoso_MININT-NB6LPJ1 2011-09-07 05_08_37">
+      <DeploymentItem filename="c:\users\jlospinoso\documents\visual studio 2010\Projects\LUT\Utils\bin\Debug\LospiUtils.dll" />
+      <DeploymentItem filename="c:\users\jlospinoso\documents\visual studio 2010\Projects\LUT\Lib\MathNet.Iridium.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-09-07T05:08:37.7459429-04:00" queuing="2011-09-07T05:08:37.9759561-04:00" start="2011-09-07T05:08:38.0059578-04:00" finish="2011-09-07T05:08:38.2909741-04:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="PercentileTest" storage="c:\users\jlospinoso\documents\visual studio 2010\projects\lut\utils.test\bin\debug\utilstest.dll" id="19b43299-b7be-1f16-99d9-13f94a42bbe5">
+      <Execution id="4d121844-dbd2-4b63-b2e2-bc53c87fea9a" />
+      <TestMethod codeBase="c:/users/jlospinoso/documents/visual studio 2010/Projects/LUT/Utils.Test/bin/Debug/UtilsTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Lospi.Utils.Test.ExtensionMethodsTest, UtilsTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="PercentileTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="19b43299-b7be-1f16-99d9-13f94a42bbe5" executionId="4d121844-dbd2-4b63-b2e2-bc53c87fea9a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="4d121844-dbd2-4b63-b2e2-bc53c87fea9a" testId="19b43299-b7be-1f16-99d9-13f94a42bbe5" testName="PercentileTest" computerName="MININT-NB6LPJ1" duration="00:00:00.0381251" startTime="2011-09-07T05:08:38.0169584-04:00" endTime="2011-09-07T05:08:38.2729731-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4d121844-dbd2-4b63-b2e2-bc53c87fea9a">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;System.Collections.Generic.Dictionary`2[System.Double,System.Double]&gt;. Actual:&lt;System.Collections.Generic.Dictionary`2[System.Double,System.Double]&gt;. </Message>
+          <StackTrace>   at Lospi.Utils.Test.ExtensionMethodsTest.PercentileTest() in c:\users\jlospinoso\documents\visual studio 2010\Projects\LUT\Utils.Test\ExtensionMethodsTest.cs:line 113
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>
