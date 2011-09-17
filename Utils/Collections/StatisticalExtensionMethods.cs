@@ -8,7 +8,7 @@ namespace Lospi.Utils.Collections
     /// <summary>
     /// Houses statistical extension methods for collections
     /// </summary>
-    public static class StatisticalExtensionMethods
+    public static partial class ExtensionMethods
     {
         /// <summary>
         /// Calculates the standard deviation of a collection of doubles
@@ -43,5 +43,28 @@ namespace Lospi.Utils.Collections
             }
             return x.Select(val => Math.Pow(val - mean, 2)).Sum() / denominator;
         }
+
+        /// <summary>
+        /// Returns a random key with probability given by its Value.
+        /// </summary>
+        /// <typeparam networkName="To">Some key type</typeparam>
+        /// <param networkName="dictionary">Extension method on dictionary</param>
+        /// <returns>A random key</returns>
+        public static T RandomKey<T>(this IDictionary<T, double> dictionary, double randomNumber)
+        {
+            foreach (T key in dictionary.Keys)
+            {
+                if (randomNumber > dictionary[key])
+                {
+                    randomNumber -= dictionary[key];
+                }
+                else
+                {
+                    return key;
+                }
+            }
+            throw new ArgumentException("Values do not sum to one: " + dictionary.Sum(x => x.Value));
+        }
+
     }
 }

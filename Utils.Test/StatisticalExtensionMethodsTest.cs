@@ -64,6 +64,27 @@ namespace Lospi.Utils.Test
         //
         #endregion
 
+        [TestMethod()]
+        public void RandomKeyTest()
+        {
+            Random rng = new Random();
+            IDictionary<String, Double> dictionary = new Dictionary<string, double>();
+
+            dictionary["one"] = 2.0 / 3.0;
+            dictionary["two"] = 1.0 / 6.0;
+            dictionary["thr"] = 1.0 / 6.0;
+            int i = 10000;
+            int ctr = 0;
+            while (i-- > 0)
+            {
+                if (dictionary.RandomKey(rng.NextDouble()) == "one")
+                {
+                    ctr++;
+                }
+            }
+            // This is probabilistic, but the range covers most of the probability mass of ctr.
+            Assert.IsTrue((ctr > 6400) & (ctr < 6800));
+        }
 
         /// <summary>
         ///A test for StandardDeviation
@@ -75,7 +96,7 @@ namespace Lospi.Utils.Test
             bool sample = false;
             double expected = 2F;
             double actual;
-            actual = StatisticalExtensionMethods.StandardDeviation(x, sample);
+            actual = ExtensionMethods.StandardDeviation(x, sample);
             Assert.AreEqual(expected, actual);
         }
 
@@ -89,7 +110,7 @@ namespace Lospi.Utils.Test
             bool sample = false;
             double expected = 16F;
             double actual;
-            actual = StatisticalExtensionMethods.Variance(x, sample);
+            actual = ExtensionMethods.Variance(x, sample);
             Assert.AreEqual(expected, actual);
         }
     }

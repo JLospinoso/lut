@@ -2,6 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using Lospi.Utils;
+using System.Linq;
 
 namespace Lospi.Utils.Test
 {
@@ -217,6 +219,45 @@ namespace Lospi.Utils.Test
             foreach (double key in expected.Keys)
             {
                 Assert.IsTrue(Math.Abs(actual[key] - expected[key]) < .00001D);
+            }
+        }
+
+        class TestCopyValue : IDeepCopyable<TestCopyValue>
+        {
+            public string Value { get; set; }
+
+            public TestCopyValue DeepCopy()
+            {
+                return new TestCopyValue { Value = this.Value };
+            }
+        }
+
+        [TestMethod()]
+        public void DeepMemberwiseCopyTest()
+        {
+            IList<TestCopyValue> baseList = new List<TestCopyValue>();
+            int count = 10;
+
+            for (int i = 0; i < count; i++)
+            {
+                baseList.Add(new TestCopyValue { Value = i.ToString() });
+            }
+
+            IList<TestCopyValue> deepCopy = baseList.DeepMemberwiseCopy().ToList();
+
+            for (int i = 0; i < count; i++)
+            {
+                Assert.IsTrue(baseList[i].Value.Equals(deepCopy[i].Value));
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                baseList[i].Value = "CLEARED";
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                Assert.IsFalse(baseList[i].Value.Equals(deepCopy[i].Value));
             }
         }
     }

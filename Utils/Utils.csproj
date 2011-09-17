@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\CopyExtensionMethods.cs" />
     <Compile Include="Collections\ScalingExtensionMethods.cs" />
     <Compile Include="Collections\StatisticalExtensionMethods.cs" />
+    <Compile Include="IDeepCopyable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

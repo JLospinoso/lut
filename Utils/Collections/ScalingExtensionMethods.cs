@@ -7,7 +7,7 @@ using MathNet.Numerics.Distributions;
 
 namespace Lospi.Utils.Collections
 {
-    public static class ExtensionMethods
+    public static partial class ExtensionMethods
     {
         /// <summary>
         ///  Scales a list onto a new interval
