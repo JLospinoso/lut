@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ * Copyright © 2011, Joshua A. Lospinoso (josh@lospi.net). All rights reserved.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

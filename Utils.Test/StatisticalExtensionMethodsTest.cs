@@ -1,4 +1,8 @@
-﻿using Lospi.Utils.Generics;
+﻿/*
+ * Copyright © 2011, Joshua A. Lospinoso (josh@lospi.net). All rights reserved.
+ */
+
+using Lospi.Utils.Generics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
