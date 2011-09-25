@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BEEAC2BB-8C48-41F6-8E0B-116157A9A2E1}</ProjectGuid>
+    <ProjectGuid>{C39FB824-2415-4693-9534-FD522E5ECCD2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lospi.Utils</RootNamespace>
-    <AssemblyName>LospiUtils</AssemblyName>
+    <RootNamespace>Lospi.Test.Utils</RootNamespace>
+    <AssemblyName>LospiUtilsTest</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -46,15 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Generics\SymmetricTwoKeyDictionary.cs" />
-    <Compile Include="Generics\CopyExtensionMethods.cs" />
-    <Compile Include="Generics\ScalingExtensionMethods.cs" />
-    <Compile Include="Generics\StatisticalExtensionMethods.cs" />
-    <Compile Include="Generics\TwoKeyDictionary.cs" />
-    <Compile Include="IDeepCopyable.cs" />
+    <Compile Include="Generics\SymmetricTwoKeyDictionaryTest.cs" />
+    <Compile Include="Generics\TwoKeyDictionaryTest.cs" />
+    <Compile Include="Generics\CopyExtensionMethodsTest.cs" />
+    <Compile Include="Generics\ScalingExtensionMethodsTest.cs" />
+    <Compile Include="Generics\StatisticalExtensionMethodsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{BEEAC2BB-8C48-41F6-8E0B-116157A9A2E1}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
