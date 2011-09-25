@@ -23,12 +23,12 @@ namespace Lospi.Utils.Generics
         /// <summary>
         /// A collection of all lesserKey 1 values
         /// </summary>
-        ICollection<Tk1> FirstKey { get; set; }
+        protected ICollection<Tk1> FirstKey { get; set; }
 
         /// <summary>
         /// A collection of all lesserKey 2 values
         /// </summary>
-        ICollection<Tk2> SecondKey { get; set; }
+        protected ICollection<Tk2> SecondKey { get; set; }
 
         /// <summary>
         /// Default constructor
