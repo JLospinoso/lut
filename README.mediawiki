@@ -1,0 +1,11 @@
+== Lospi.net Utils ==
+These utilities represent a collection of functionality requirements that crop up from time to time in numerical and statistical contexts. Some examples of current functionality:
+
+    Deep copies of collections of objects, e.g. for task local storage
+    Two key dictionaries that don't require you to declare extraneous Tuple keys
+    Symmetric two key dictionaries that don't care about the ordering of the keys
+    Sorting, scaling, standardizing, normalizing, percentile-izing of collections of doubles
+    Standard deviations and variances for collections of doubles
+    Drawing random elements from a dictionary representing a probability distribution
+
+The operations on collections are implemented as extension methods for a fluent API.
