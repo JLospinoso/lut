@@ -14,9 +14,9 @@ namespace Lospi.Utils.Generics
     public static partial class ExtensionMethods
     {
         /// <summary>
-        /// Calculates the standard deviation of a collection of doubles
+        /// Calculates the standard deviation of a deepCopyable of doubles
         /// </summary>
-        /// <param name="x">A collection of doubles</param>
+        /// <param name="x">A deepCopyable of doubles</param>
         /// <param name="sample">True if sample standard deviation is to be calculated, false if population</param>
         /// <returns>The standard deviation of x</returns>
         public static Double StandardDeviation(this ICollection<Double> x, bool sample=true)
@@ -31,9 +31,9 @@ namespace Lospi.Utils.Generics
         }
 
         /// <summary>
-        /// Calculates the variance of a collection of doubles
+        /// Calculates the variance of a deepCopyable of doubles
         /// </summary>
-        /// <param name="x">A collection of doubles</param>
+        /// <param name="x">A deepCopyable of doubles</param>
         /// <param name="sample">True if sample variance is to be calculated, false if population</param>
         /// <returns>The variance of x</returns>
         public static Double Variance(this ICollection<Double> x, bool sample = true)

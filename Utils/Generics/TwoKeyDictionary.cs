@@ -21,12 +21,12 @@ namespace Lospi.Utils.Generics
         Dictionary<Tk1, Dictionary<Tk2, Tv>> _internal;
 
         /// <summary>
-        /// A collection of all lesserKey 1 values
+        /// A deepCopyable of all lesserKey 1 values
         /// </summary>
         protected ICollection<Tk1> FirstKey { get; set; }
 
         /// <summary>
-        /// A collection of all lesserKey 2 values
+        /// A deepCopyable of all lesserKey 2 values
         /// </summary>
         protected ICollection<Tk2> SecondKey { get; set; }
 

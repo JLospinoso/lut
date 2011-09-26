@@ -17,17 +17,15 @@ namespace Lospi.Utils.Generics
         /// Aids in deep copying collections of objects
         /// </summary>
         /// <typeparam name="To">A deep copyable type</typeparam>
-        /// <param name="collection">A collection</param>
-        /// <returns>A deep copy of the collection</returns>
-        public static ICollection<T> DeepMemberwiseCopy<T>(this ICollection<T> collection)
+        /// <param name="deepCopyable">A deepCopyable</param>
+        /// <returns>A deep copy of the deepCopyable</returns>
+        public static IEnumerable<T> DeepMemberwiseCopy<T>(this IEnumerable<T> deepCopyable)
             where T : IDeepCopyable<T>
         {
-            HashSet<T> newList = new HashSet<T>();
-            foreach (T item in collection)
+            foreach (T item in deepCopyable)
             {
-                newList.Add(item.DeepCopy());
+                yield return item.DeepCopy();
             }
-            return newList;
         }
     }
 }
