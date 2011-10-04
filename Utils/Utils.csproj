@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generics\SealedSymmetricTwoKeyDictionary.cs" />
+    <Compile Include="Generics\SealedTwoKeyDictionary.cs" />
     <Compile Include="Generics\SymmetricTwoKeyDictionary.cs" />
     <Compile Include="Generics\CopyExtensionMethods.cs" />
     <Compile Include="Generics\ScalingExtensionMethods.cs" />

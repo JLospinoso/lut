@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generics\SealedSymmetricTwoKeyDictionaryTest.cs" />
+    <Compile Include="Generics\SealedTwoKeyDictionaryTest.cs" />
     <Compile Include="Generics\SymmetricTwoKeyDictionaryTest.cs" />
     <Compile Include="Generics\TwoKeyDictionaryTest.cs" />
     <Compile Include="Generics\CopyExtensionMethodsTest.cs" />
