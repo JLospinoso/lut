@@ -1,6 +1,0 @@
-c:\users\jlospinoso\documents\visual studio 2010\Projects\LUT\Utils\bin\Debug\LospiUtils.dll
-c:\users\jlospinoso\documents\visual studio 2010\Projects\LUT\Utils\bin\Debug\LospiUtils.pdb
-c:\users\jlospinoso\documents\visual studio 2010\Projects\LUT\Utils\bin\Debug\MathNet.Iridium.dll
-c:\users\jlospinoso\documents\visual studio 2010\Projects\LUT\Utils\obj\Debug\ResolveAssemblyReference.cache
-c:\users\jlospinoso\documents\visual studio 2010\Projects\LUT\Utils\obj\Debug\LospiUtils.dll
-c:\users\jlospinoso\documents\visual studio 2010\Projects\LUT\Utils\obj\Debug\LospiUtils.pdb
