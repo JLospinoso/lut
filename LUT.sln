@@ -4,9 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{BEEAC2BB-8C48-41F6-8E0B-116157A9A2E1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4F08C85B-28F7-47C3-880F-AEC20579FBD4}"
-	ProjectSection(SolutionItems) = preProject
-		Build.proj = Build.proj
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilsTest", "UtilsTest\UtilsTest.csproj", "{C39FB824-2415-4693-9534-FD522E5ECCD2}"
 EndProject
