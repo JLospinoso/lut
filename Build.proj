@@ -1,5 +1,13 @@
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<Target Name="Build">
-		<MSBuild Targets="Clean;Rebuild" Projects="LUT.sln" />
+		<MSBuild Targets="Clean;Rebuild" Projects="LUT.sln" />	
+	</Target>
+	
+	<Target Name="Build-Debug">
+		<MSBuild Projects="LUT.sln" Targets="Rebuild" Properties="Configuration=Debug" />
+	</Target>
+	
+	<Target Name="Build-Release">
+		<MSBuild Projects="LUT.sln" Targets="Rebuild" Properties="Configuration=Release" />
 	</Target>
 </Project>
