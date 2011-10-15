@@ -5,6 +5,8 @@
 using NUnit.Framework;
 using Lospi.Utils.Generics;
 using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace Lospi.Test.Utils.Generics
 {
@@ -35,7 +37,7 @@ namespace Lospi.Test.Utils.Generics
         }
 
         [Test]
-        public void TwoKeyDictionaryTest_Getters_EqualSetters()
+        public void SealedSymmetricTwoKeyDictionary_Getters_EqualSetters()
         {
             Assert.That(dict["a", "a"], Is.EqualTo(1));
             Assert.That(dict["b", "a"], Is.EqualTo(2));
@@ -49,7 +51,7 @@ namespace Lospi.Test.Utils.Generics
         }
 
         [Test]
-        public void TwoKeyDictionaryTest_Marginalizer_Works()
+        public void SealedSymmetricTwoKeyDictionary_Marginalizer_Works()
         {
             var result = dict["a"];
             Assert.That(result["a"], Is.EqualTo(1));
@@ -57,5 +59,48 @@ namespace Lospi.Test.Utils.Generics
             Assert.That(result["c"], Is.EqualTo(3));
         }
 
+        [Test]
+        public void SealedSymmetricTwoKeyDictionary_TryGetValue_ReturnsValue()
+        {
+            int result;
+
+            dict.TryGetValue("a", "c", out result);
+
+            Assert.That(result, Is.EqualTo(3));
+        }
+
+        [Test]
+        public void SealedSymmetricTwoKeyDictionary_TryGetValueForInvalidKey_ReturnsDefaultValue()
+        {
+            int result;
+
+            dict.TryGetValue("z", "z", out result);
+
+            Assert.That(result, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void SealedSymmetricTwoKeyDictionary_Keys_GivesAllKeyPairings()
+        {
+            var keys = dict.Keys.ToList();
+
+            Assert.That(keys, Contains.Item("a"));
+            Assert.That(keys, Contains.Item("b"));
+            Assert.That(keys, Contains.Item("c"));
+
+        }
+
+        [Test]
+        public void SealedSymmetricTwoKeyDictionary_Values_GivesAllValues()
+        {
+            var values = dict.Values.ToList();
+
+            Assert.That(values, Contains.Item(1));
+            Assert.That(values, Contains.Item(2));
+            Assert.That(values, Contains.Item(3));
+            Assert.That(values, Contains.Item(4));
+            Assert.That(values, Contains.Item(5));
+            Assert.That(values, Contains.Item(6));
+        }
     }
 }

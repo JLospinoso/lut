@@ -48,11 +48,11 @@ namespace Lospi.Utils.Generics
         }
 
         /// <summary>
-        /// Returns a random lesserKey with probability given by its Value.
+        /// Returns a random key with probability given by its Value.
         /// </summary>
-        /// <typeparam networkName="To">Some lesserKey type</typeparam>
+        /// <typeparam networkName="To">Some key type</typeparam>
         /// <param networkName="dictionary">Extension method on dictionary</param>
-        /// <returns>A random lesserKey</returns>
+        /// <returns>A random key</returns>
         public static T RandomKey<T>(this IDictionary<T, double> dictionary, double randomNumber)
         {
             foreach (T key in dictionary.Keys)

@@ -126,7 +126,7 @@ namespace Lospi.Utils.Generics
         }
 
         /// <summary>
-        /// Sorts a dictionary on its double lesserKey values
+        /// Sorts a dictionary on its double key values
         /// </summary>
         /// <typeparam name="T">Value type</typeparam>
         /// <param name="dictionary"></param>

@@ -15,7 +15,7 @@ namespace Lospi.Utils.Generics
     /// </summary>
     /// <typeparam name="Tk"></typeparam>
     /// <typeparam name="Tv"></typeparam>
-    public class SymmetricTwoKeyDictionary<Tk, Tv>
+    public class SymmetricTwoKeyDictionary<Tk, Tv> : ISymmetricTwoKeyDictionary<Tk, Tv>
     {
         /// <summary>
         /// Internal storage of the values
@@ -117,6 +117,28 @@ namespace Lospi.Utils.Generics
             }
         }
 
+        bool OrderKeysSafe(ref Tk key1, ref Tk key2)
+        {
+            int hashOne, hashTwo;
+
+            var hashOnePresent = _hashTable.TryGetValue(key1, out hashOne);
+            var hashTwoPresent = _hashTable.TryGetValue(key2, out hashTwo);
+
+            if (!hashOnePresent || !hashTwoPresent)
+            {
+                return false;
+            }
+
+            if (hashOne < hashTwo)
+            {
+                Tk temporary = key1;
+                key1 = key2;
+                key2 = temporary;
+            }
+
+            return true;
+        }
+
         /// <summary>
         /// A convenient getter and setter
         /// </summary>
@@ -149,7 +171,7 @@ namespace Lospi.Utils.Generics
             get { return Marginalize(key); }
         }
 
-        IDictionary<Tk,Tv> Marginalize(Tk index)
+        public IDictionary<Tk,Tv> Marginalize(Tk index)
         {
             var result = new Dictionary<Tk, Tv>();
 
@@ -159,6 +181,42 @@ namespace Lospi.Utils.Generics
             }
 
             return result;
+        }
+
+        public bool TryGetValue(Tk key1, Tk key2, out Tv value)
+        {
+            if (OrderKeysSafe(ref key1, ref key2))
+            {
+                value = this[key1, key2];
+                return true;
+            }
+            else
+            {
+                value = default(Tv);
+                return false;
+            }
+        }
+
+        public IEnumerable<Tk> Keys
+        {
+            get
+            {
+                return _hashTable.Keys;
+            }
+        }
+
+        public IEnumerable<Tv> Values
+        {
+            get
+            {
+                foreach (var key1 in _internal.Keys)
+                {
+                    foreach (var value in _internal[key1].Values)
+                    {
+                        yield return value;
+                    }
+                }
+            }
         }
     }
 }

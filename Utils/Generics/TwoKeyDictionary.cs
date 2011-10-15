@@ -6,14 +6,14 @@ using System.Text;
 namespace Lospi.Utils.Generics
 {
     /// <summary>
-    /// A custom dictionary that accepts two keys. You can consider each lesserKey pair as a unique
+    /// A custom dictionary that accepts two keys. You can consider each key pair as a unique
     /// key1. This dictionary is useful for not having to create custom object pairs.
     /// You must ensure that, like a normal IDictionary, the keys produce unique GetHashcode().
     /// </summary>
-    /// <typeparam name="Tk1">The type of lesserKey 1</typeparam>
-    /// <typeparam name="Tk2">The type of lesserKey 2</typeparam>
+    /// <typeparam name="Tk1">The type of key 1</typeparam>
+    /// <typeparam name="Tk2">The type of key 2</typeparam>
     /// <typeparam name="Tv">The type of the value</typeparam>
-    public class TwoKeyDictionary<Tk1, Tk2, Tv>
+    public class TwoKeyDictionary<Tk1, Tk2, Tv> : ITwoKeyDictionary<Tk1, Tk2, Tv>
     {
         /// <summary>
         /// Internal storage of the values
@@ -21,12 +21,12 @@ namespace Lospi.Utils.Generics
         Dictionary<Tk1, Dictionary<Tk2, Tv>> _internal;
 
         /// <summary>
-        /// A deepCopyable of all lesserKey 1 values
+        /// A deepCopyable of all key 1 values
         /// </summary>
         protected ICollection<Tk1> FirstKey { get; set; }
 
         /// <summary>
-        /// A deepCopyable of all lesserKey 2 values
+        /// A deepCopyable of all key 2 values
         /// </summary>
         protected ICollection<Tk2> SecondKey { get; set; }
 
@@ -122,7 +122,7 @@ namespace Lospi.Utils.Generics
         }
 
         /// <summary>
-        /// Returns a marginalized, single lesserKey dictionary over a lesserKey one
+        /// Returns a marginalized, single key dictionary over a key one
         /// key1
         /// </summary>
         /// <param name="key1">Index over which to marginalize</param>
@@ -133,7 +133,7 @@ namespace Lospi.Utils.Generics
         }
 
         /// <summary>
-        /// Returns a marginalized, single lesserKey dictionary over a lesserKey two
+        /// Returns a marginalized, single key dictionary over a key two
         /// key1
         /// </summary>
         /// <param name="key1">Index over which to marginalize</param>
@@ -146,6 +146,49 @@ namespace Lospi.Utils.Generics
                 result[key1] = _internal[key1][index];
             }
             return result;
+        }
+
+        public bool TryGetValue(Tk1 key1, Tk2 key2, out Tv value)
+        {
+            Dictionary<Tk2, Tv> intermediate;
+
+            _internal.TryGetValue(key1, out intermediate);
+
+            if (intermediate == null)
+            {
+                value = default(Tv);
+                return false;
+            }
+
+            return intermediate.TryGetValue(key2, out value);
+        }
+
+        public IEnumerable<Tuple<Tk1, Tk2>> Keys
+        {
+            get
+            {
+                foreach (var key1 in _internal.Keys)
+                {
+                    foreach (var key2 in _internal[key1].Keys)
+                    {
+                        yield return new Tuple<Tk1, Tk2>(key1, key2);
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<Tv> Values
+        {
+            get
+            {
+                foreach (var key1 in _internal.Keys)
+                {
+                    foreach (var key2 in _internal[key1].Keys)
+                    {
+                        yield return this[key1, key2];
+                    }
+                }
+            }
         }
     }
 }

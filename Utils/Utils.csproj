@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generics\ISymmetricTwoKeyDictionary.cs" />
+    <Compile Include="Generics\ITwoKeyDictionary.cs" />
     <Compile Include="Generics\SealedSymmetricTwoKeyDictionary.cs" />
     <Compile Include="Generics\SealedTwoKeyDictionary.cs" />
     <Compile Include="Generics\SymmetricTwoKeyDictionary.cs" />

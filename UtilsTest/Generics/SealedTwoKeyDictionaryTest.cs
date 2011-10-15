@@ -5,6 +5,8 @@
 using NUnit.Framework;
 using Lospi.Utils.Generics;
 using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace Lospi.Test.Utils.Generics
 {
@@ -37,13 +39,13 @@ namespace Lospi.Test.Utils.Generics
         }
 
         [Test]
-        public void TwoKeyDictionaryTest_Getters_EqualSetters()
+        public void SealedTwoKeyDictionary_Getters_EqualSetters()
         {
             Assert.That(dict["b", 2], Is.EqualTo(5D));
         }
 
         [Test]
-        public void TwoKeyDictionaryTest_KeyOneMarginalizer_Works()
+        public void SealedTwoKeyDictionary_KeyOneMarginalizer_Works()
         {
             var result = dict.MarginalizeKeyOne("b");
             Assert.That(result[1], Is.EqualTo(4D));
@@ -52,11 +54,58 @@ namespace Lospi.Test.Utils.Generics
         }
 
         [Test]
-        public void TwoKeyDictionaryTest_KeyTwoMarginalizer_Works()
+        public void SealedTwoKeyDictionary_KeyTwoMarginalizer_Works()
         {
             var result = dict.MarginalizeKeyTwo(3);
             Assert.That(result["a"], Is.EqualTo(3D));
             Assert.That(result["b"], Is.EqualTo(6D));
+        }
+
+
+        [Test]
+        public void SealedTwoKeyDictionary_TryGetValue_ReturnsValueIfPresent()
+        {
+            double result;
+
+            dict.TryGetValue("b", 2, out result);
+
+            Assert.That(result, Is.EqualTo(5D));
+        }
+
+        [Test]
+        public void SealedTwoKeyDictionary_TryGetValue_ReturnsValueIfNotPresent()
+        {
+            double result;
+
+            dict.TryGetValue("z", 2, out result);
+
+            Assert.That(result, Is.EqualTo(0D));
+        }
+
+        [Test]
+        public void SealedTwoKeyDictionary_Keys_GivesAllKeyPairings()
+        {
+            var keys = dict.Keys.ToList();
+
+            Assert.That(keys, Contains.Item(new Tuple<string, int>("a", 1)));
+            Assert.That(keys, Contains.Item(new Tuple<string, int>("a", 2)));
+            Assert.That(keys, Contains.Item(new Tuple<string, int>("a", 3)));
+            Assert.That(keys, Contains.Item(new Tuple<string, int>("b", 1)));
+            Assert.That(keys, Contains.Item(new Tuple<string, int>("b", 2)));
+            Assert.That(keys, Contains.Item(new Tuple<string, int>("b", 3)));
+        }
+
+        [Test]
+        public void SealedTwoKeyDictionary_Values_GivesAllValues()
+        {
+            var values = dict.Values.ToList();
+
+            Assert.That(values, Contains.Item(1D));
+            Assert.That(values, Contains.Item(2D));
+            Assert.That(values, Contains.Item(3D));
+            Assert.That(values, Contains.Item(4D));
+            Assert.That(values, Contains.Item(5D));
+            Assert.That(values, Contains.Item(6D));
         }
     }
 }
