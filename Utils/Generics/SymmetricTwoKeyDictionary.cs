@@ -24,8 +24,22 @@ namespace Lospi.Utils.Generics
 
         Dictionary<Tk, int> _hashTable;
 
+
         /// <summary>
         /// Default constructor
+        /// </summary>
+        public SymmetricTwoKeyDictionary()
+        {
+            _hashTable = new Dictionary<Tk, int>();
+
+            CheckHashCodes();
+
+            _internal = new Dictionary<Tk, Dictionary<Tk, Tv>>();
+
+        }
+
+        /// <summary>
+        /// Constructor
         /// </summary>
         /// <param name="firstKeys">All of the possible first keys for this dictionary</param>
         /// <param name="secondKeys">All of the possible second keys for this dictionary</param>

@@ -56,6 +56,7 @@
     <Compile Include="Generics\TwoKeyDictionary.cs" />
     <Compile Include="IDeepCopyable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statistics\RandomEnumerable.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

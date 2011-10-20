@@ -54,6 +54,7 @@
     <Compile Include="Generics\ScalingExtensionMethodsTest.cs" />
     <Compile Include="Generics\StatisticalExtensionMethodsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statistics\RandomEnumerableTest.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

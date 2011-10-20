@@ -33,6 +33,19 @@ namespace Lospi.Utils.Generics
         /// <summary>
         /// Default constructor
         /// </summary>
+        public TwoKeyDictionary()
+        {
+            FirstKey = new List<Tk1>();
+            SecondKey = new List<Tk2>();
+
+            CheckHashCodes();
+
+            _internal = new Dictionary<Tk1, Dictionary<Tk2, Tv>>();
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         /// <param name="firstKeys">All of the possible first keys for this dictionary</param>
         /// <param name="secondKeys">All of the possible second keys for this dictionary</param>
         public TwoKeyDictionary(IEnumerable<Tk1> firstKeys, IEnumerable<Tk2> secondKeys)
