@@ -3,10 +3,8 @@
  */
 
 using System;
-using System.Linq;
-using System.Text;
 using System.Collections.Generic;
-using MathNet.Numerics;
+using System.Linq;
 using MathNet.Numerics.Distributions;
 
 namespace Lospi.Utils.Generics
@@ -24,7 +22,6 @@ namespace Lospi.Utils.Generics
         {
             Double max = list.Max();
             Double min = list.Min();
-            Double avg = list.Sum() / list.Count;
             return list.ToDictionary(x => x, x => (upper - lower) * ((x - min) / (max - min)) + lower);
         }
 
@@ -45,7 +42,8 @@ namespace Lospi.Utils.Generics
         /// <summary>
         /// Calculates the percentile for each element
         /// </summary>
-        /// <param name="list"></param>
+        /// <param name="list">A list of doubles</param>
+        /// <param name="midpoint">Should the percentile start at .5 for the first element?</param>
         /// <returns></returns>
         public static IDictionary<Double, Double> Percentile(this IList<Double> list, bool midpoint = false)
         {
@@ -78,11 +76,13 @@ namespace Lospi.Utils.Generics
         /// <summary>
         /// "Curves" the list by mapping it onto a standard normal distribution
         /// </summary>
-        /// <param name="list"></param>
+        /// <param name="list">A list of doubles</param>
+        /// <param name="mean">The desired mean</param>
+        /// <param name="stdev">The desired standard deviation</param>
         /// <returns></returns>
         public static IDictionary<Double, Double> Normalize(this IList<Double> list, double mean=0, double stdev=1)
         {
-            NormalDistribution normal = new NormalDistribution(mean, stdev);
+            var normal = new NormalDistribution(mean, stdev);
             return list.Percentile(true).ToDictionary( x => x.Key, x => normal.InverseCumulativeDistribution(x.Value) );
         }
 
@@ -95,7 +95,7 @@ namespace Lospi.Utils.Generics
         /// <returns></returns>
         public static Double Range(this IList<Double> list, double lowerPercentile = 0, double upperPercentile = 1)
         {
-            IDictionary<Double, Double> lookup = list.Percentile(false);
+            IDictionary<Double, Double> lookup = list.Percentile();
             Double lowerValue = lookup.Where(x => x.Value <= lowerPercentile).Max(x=>x.Key);
             Double upperValue = lookup.Where(x => x.Value >= upperPercentile).Min(x => x.Key);
             return upperValue - lowerValue;
@@ -104,24 +104,22 @@ namespace Lospi.Utils.Generics
         /// <summary>
         /// Prints a dictionary of double, double to Console.
         /// </summary>
-        /// <param name="dictionary"></param>
+        /// <param name="dictionary">A dictionary</param>
+        /// <param name="prepend">Add some front matter to the output?</param>
+        /// <param name="append">Add some end matter to the output?</param>
+        /// <param name="sort">Sort by key?</param>
         /// <returns></returns>
         public static void ToConsole(this IDictionary<Double, Double> dictionary, String prepend = "", String append = "", Boolean sort = false)
         {
-            IList<Double> keys;
-            if (sort)
-            {
-                keys = dictionary.SortOnKeys().Keys.ToList();
-            }
-            else
-            {
-                keys = dictionary.Keys.ToList();
-            }
+            IList<double> keys = sort ? dictionary.SortOnKeys().Keys.ToList() : dictionary.Keys.ToList();
+
             Console.Write(prepend);
-            foreach (Double i in keys)
+
+            foreach (var i in keys)
             {
                 Console.WriteLine(String.Format("{0:0.0000} {1:0.0000}", i, dictionary[i]));
             }
+
             Console.Write(append);
         }
 

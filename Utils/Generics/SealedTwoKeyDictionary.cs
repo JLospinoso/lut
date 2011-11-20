@@ -1,7 +1,10 @@
-﻿using System;
+﻿/*
+ * Copyright © 2011, Joshua A. Lospinoso (josh@lospi.net). All rights reserved.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Lospi.Utils.Generics
 {
@@ -11,46 +14,46 @@ namespace Lospi.Utils.Generics
     /// You must ensure that, like a normal IDictionary, the keys produce unique GetHashcode().
     /// You cannot add or remove keys once the object is initialized.
     /// </summary>
-    /// <typeparam name="Tk1">The type of key 1</typeparam>
-    /// <typeparam name="Tk2">The type of key 2</typeparam>
-    /// <typeparam name="Tv">The type of the value</typeparam>
-    public class SealedTwoKeyDictionary<Tk1, Tk2, Tv> : ITwoKeyDictionary<Tk1, Tk2, Tv>
+    /// <typeparam name="TK1">The type of key 1</typeparam>
+    /// <typeparam name="TK2">The type of key 2</typeparam>
+    /// <typeparam name="TV">The type of the value</typeparam>
+    public class SealedTwoKeyDictionary<TK1, TK2, TV> : ITwoKeyDictionary<TK1, TK2, TV>
     {
         /// <summary>
         /// Internal storage of the values
         /// </summary>
-        Dictionary<Tk1, Dictionary<Tk2, Tv>> _internal;
+        readonly Dictionary<TK1, Dictionary<TK2, TV>> _internal;
 
         /// <summary>
         /// A deepCopyable of all key 1 values
         /// </summary>
-        protected ICollection<Tk1> FirstKey { get; set; }
+        protected ICollection<TK1> FirstKey { get; set; }
 
         /// <summary>
         /// A deepCopyable of all key 2 values
         /// </summary>
-        protected ICollection<Tk2> SecondKey { get; set; }
+        protected ICollection<TK2> SecondKey { get; set; }
 
         /// <summary>
         /// Default constructor
         /// </summary>
         /// <param name="firstKeys">All of the possible first keys for this dictionary</param>
         /// <param name="secondKeys">All of the possible second keys for this dictionary</param>
-        public SealedTwoKeyDictionary(IEnumerable<Tk1> firstKeys, IEnumerable<Tk2> secondKeys)
+        public SealedTwoKeyDictionary(ICollection<TK1> firstKeys, ICollection<TK2> secondKeys)
         {
-            FirstKey = firstKeys.ToList();
-            SecondKey = secondKeys.ToList();
+            FirstKey = firstKeys;
+            SecondKey = secondKeys;
 
             CheckHashCodes();
 
-            _internal = new Dictionary<Tk1, Dictionary<Tk2, Tv>>();
+            _internal = new Dictionary<TK1, Dictionary<TK2, TV>>();
 
-            foreach (Tk1 key1 in FirstKey)
+            foreach (var key1 in FirstKey)
             {
-                _internal[key1] = new Dictionary<Tk2, Tv>();
-                foreach (Tk2 key2 in SecondKey)
+                _internal[key1] = new Dictionary<TK2, TV>();
+                foreach (var key2 in SecondKey)
                 {
-                    _internal[key1][key2] = default(Tv);
+                    _internal[key1][key2] = default(TV);
                 }
             }
         }
@@ -75,10 +78,10 @@ namespace Lospi.Utils.Generics
         /// <summary>
         /// A convenient getter and setter
         /// </summary>
-        /// <param name="index1">Key one</param>
-        /// <param name="index2">Key two</param>
+        /// <param name="key1">Key one</param>
+        /// <param name="key2">Key two</param>
         /// <returns>The corresponding value</returns>
-        public Tv this[Tk1 key1, Tk2 key2]
+        public TV this[TK1 key1, TK2 key2]
         {
             get
             {
@@ -94,9 +97,9 @@ namespace Lospi.Utils.Generics
         /// Returns a marginalized, single key dictionary over a key one
         /// key1
         /// </summary>
-        /// <param name="key1">Index over which to marginalize</param>
+        /// <param name="index">Index over which to marginalize</param>
         /// <returns></returns>
-        public IDictionary<Tk2, Tv> MarginalizeKeyOne(Tk1 index)
+        public IDictionary<TK2, TV> MarginalizeKeyOne(TK1 index)
         {
             return _internal[index];
         }
@@ -105,59 +108,41 @@ namespace Lospi.Utils.Generics
         /// Returns a marginalized, single key dictionary over a key two
         /// key1
         /// </summary>
-        /// <param name="key1">Index over which to marginalize</param>
+        /// <param name="index">Index over which to marginalize</param>
         /// <returns></returns>
-        public IDictionary<Tk1, Tv> MarginalizeKeyTwo(Tk2 index)
+        public IDictionary<TK1, TV> MarginalizeKeyTwo(TK2 index)
         {
-            var result = new Dictionary<Tk1, Tv>();
-            foreach (Tk1 key1 in _internal.Keys)
+            var result = new Dictionary<TK1, TV>();
+            foreach (TK1 key1 in _internal.Keys)
             {
                 result[key1] = _internal[key1][index];
             }
             return result;
         }
 
-        public bool TryGetValue(Tk1 key1, Tk2 key2, out Tv value)
+        public bool TryGetValue(TK1 key1, TK2 key2, out TV value)
         {
-            Dictionary<Tk2, Tv> intermediate;
+            Dictionary<TK2, TV> intermediate;
 
             _internal.TryGetValue(key1, out intermediate);
 
             if (intermediate == null)
             {
-                value = default(Tv);
+                value = default(TV);
                 return false;
             }
 
             return intermediate.TryGetValue(key2, out value);
         }
 
-        public IEnumerable<Tuple<Tk1, Tk2>> Keys
+        public IEnumerable<Tuple<TK1, TK2>> Keys
         {
-            get
-            {
-                foreach (var key1 in _internal.Keys)
-                {
-                    foreach (var key2 in _internal[key1].Keys)
-                    {
-                        yield return new Tuple<Tk1, Tk2>(key1, key2);
-                    }
-                }
-            }
+            get { return from key1 in _internal.Keys from key2 in _internal[key1].Keys select new Tuple<TK1, TK2>(key1, key2); }
         }
 
-        public IEnumerable<Tv> Values
+        public IEnumerable<TV> Values
         {
-            get
-            {
-                foreach (var key1 in _internal.Keys)
-                {
-                    foreach (var key2 in _internal[key1].Keys)
-                    {
-                        yield return this[key1, key2];
-                    }
-                }
-            }
+            get { return from key1 in _internal.Keys from key2 in _internal[key1].Keys select this[key1, key2]; }
         }
     }
 }

@@ -2,87 +2,85 @@
  * Copyright © 2011, Joshua A. Lospinoso (josh@lospi.net). All rights reserved.
  */
 
-using NUnit.Framework;
-using Lospi.Utils.Generics;
-using System.Collections.Generic;
 using System.Linq;
-using System;
+using Lospi.Utils.Generics;
+using NUnit.Framework;
 
 namespace Lospi.Test.Utils.Generics
 {
     [TestFixture]
     public class SealedSymmetricTwoKeyDictionaryTest
     {
-        SealedSymmetricTwoKeyDictionary<string, int> dict;
+        SealedSymmetricTwoKeyDictionary<string, int> _dictionary;
 
         [SetUp]
         public void TwoKeyDictionaryTestSetUp()
         {
             string[] keys = { "a", "b", "c"};
 
-            dict = new SealedSymmetricTwoKeyDictionary<string, int>(keys);
+            _dictionary = new SealedSymmetricTwoKeyDictionary<string, int>(keys);
 
-            dict["a", "a"] = 1;
-            dict["a", "b"] = 2;
-            dict["a", "c"] = 3;
-            dict["b", "b"] = 4;
-            dict["b", "c"] = 5;
-            dict["c", "c"] = 6;
+            _dictionary["a", "a"] = 1;
+            _dictionary["a", "b"] = 2;
+            _dictionary["a", "c"] = 3;
+            _dictionary["b", "b"] = 4;
+            _dictionary["b", "c"] = 5;
+            _dictionary["c", "c"] = 6;
         }
 
         [TearDown]
         public void TwoKeyDictionaryTestTearDown()
         {
-            dict = null;
+            _dictionary = null;
         }
 
         [Test]
-        public void SealedSymmetricTwoKeyDictionary_Getters_EqualSetters()
+        public void SealedSymmetricTwoKeyDictionaryGettersEqualSetters()
         {
-            Assert.That(dict["a", "a"], Is.EqualTo(1));
-            Assert.That(dict["b", "a"], Is.EqualTo(2));
-            Assert.That(dict["a", "b"], Is.EqualTo(2));
-            Assert.That(dict["a", "c"], Is.EqualTo(3));
-            Assert.That(dict["c", "a"], Is.EqualTo(3));
-            Assert.That(dict["b", "b"], Is.EqualTo(4));
-            Assert.That(dict["b", "c"], Is.EqualTo(5));
-            Assert.That(dict["c", "b"], Is.EqualTo(5));
-            Assert.That(dict["c", "c"], Is.EqualTo(6));
+            Assert.That(_dictionary["a", "a"], Is.EqualTo(1));
+            Assert.That(_dictionary["b", "a"], Is.EqualTo(2));
+            Assert.That(_dictionary["a", "b"], Is.EqualTo(2));
+            Assert.That(_dictionary["a", "c"], Is.EqualTo(3));
+            Assert.That(_dictionary["c", "a"], Is.EqualTo(3));
+            Assert.That(_dictionary["b", "b"], Is.EqualTo(4));
+            Assert.That(_dictionary["b", "c"], Is.EqualTo(5));
+            Assert.That(_dictionary["c", "b"], Is.EqualTo(5));
+            Assert.That(_dictionary["c", "c"], Is.EqualTo(6));
         }
 
         [Test]
-        public void SealedSymmetricTwoKeyDictionary_Marginalizer_Works()
+        public void SealedSymmetricTwoKeyDictionaryMarginalizerWorks()
         {
-            var result = dict["a"];
+            var result = _dictionary["a"];
             Assert.That(result["a"], Is.EqualTo(1));
             Assert.That(result["b"], Is.EqualTo(2));
             Assert.That(result["c"], Is.EqualTo(3));
         }
 
         [Test]
-        public void SealedSymmetricTwoKeyDictionary_TryGetValue_ReturnsValue()
+        public void SealedSymmetricTwoKeyDictionaryTryGetValueReturnsValue()
         {
             int result;
 
-            dict.TryGetValue("a", "c", out result);
+            _dictionary.TryGetValue("a", "c", out result);
 
             Assert.That(result, Is.EqualTo(3));
         }
 
         [Test]
-        public void SealedSymmetricTwoKeyDictionary_TryGetValueForInvalidKey_ReturnsDefaultValue()
+        public void SealedSymmetricTwoKeyDictionaryTryGetValueForInvalidKeyReturnsDefaultValue()
         {
             int result;
 
-            dict.TryGetValue("z", "z", out result);
+            _dictionary.TryGetValue("z", "z", out result);
 
             Assert.That(result, Is.EqualTo(0));
         }
 
         [Test]
-        public void SealedSymmetricTwoKeyDictionary_Keys_GivesAllKeyPairings()
+        public void SealedSymmetricTwoKeyDictionaryKeysGivesAllKeyPairings()
         {
-            var keys = dict.Keys.ToList();
+            var keys = _dictionary.Keys.ToList();
 
             Assert.That(keys, Contains.Item("a"));
             Assert.That(keys, Contains.Item("b"));
@@ -91,9 +89,9 @@ namespace Lospi.Test.Utils.Generics
         }
 
         [Test]
-        public void SealedSymmetricTwoKeyDictionary_Values_GivesAllValues()
+        public void SealedSymmetricTwoKeyDictionaryValuesGivesAllValues()
         {
-            var values = dict.Values.ToList();
+            var values = _dictionary.Values.ToList();
 
             Assert.That(values, Contains.Item(1));
             Assert.That(values, Contains.Item(2));

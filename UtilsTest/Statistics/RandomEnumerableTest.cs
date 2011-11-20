@@ -2,12 +2,10 @@
  * Copyright © 2011, Joshua A. Lospinoso (josh@lospi.net). All rights reserved.
  */
 
-using NUnit.Framework;
-using Lospi.Utils.Statistics;
-using System.Collections.Generic;
-using System.Linq;
 using System;
+using System.Linq;
 using MathNet.Numerics.RandomSources;
+using NUnit.Framework;
 
 namespace Lospi.Test.Utils.Statistics
 {
@@ -16,7 +14,7 @@ namespace Lospi.Test.Utils.Statistics
     {
         [Test]
         [ExpectedException(typeof(ArgumentException))]
-        public void RandomEnumerable_ProducesError_ForIllegalArgumentsOnRanges()
+        public void RandomEnumerableProducesErrorForIllegalArgumentsOnRanges()
         {
             var randomSource = new MersenneTwisterRandomSource();
             Lospi.Utils.Statistics.RandomEnumerable.Range(11, -1, randomSource);
@@ -24,7 +22,7 @@ namespace Lospi.Test.Utils.Statistics
 
         [Test]
         [ExpectedException(typeof(ArgumentException))]
-        public void RandomEnumerable_ProducesError_ForIllegalArgumentsOnFroms()
+        public void RandomEnumerableProducesErrorForIllegalArgumentsOnFroms()
         {
             var randomSource = new MersenneTwisterRandomSource();
             Lospi.Utils.Statistics.RandomEnumerable.From(-4, -5, randomSource);
@@ -34,7 +32,7 @@ namespace Lospi.Test.Utils.Statistics
         [TestCase(0, 10)]
         [TestCase(-13, 7)]
         [TestCase(3, 3)]
-        public void RandomEnumerable_Produces_RangesContainingWholeEnumeration(int start, int end)
+        public void RandomEnumerableProducesRangesContainingWholeEnumeration(int start, int end)
         {
             var randomSource = new MersenneTwisterRandomSource();
             int trials = 1000;
@@ -50,10 +48,10 @@ namespace Lospi.Test.Utils.Statistics
         }
 
         [Test]
-        public void RandomEnumerable_Produces_RangesWithUniformDistributions()
+        public void RandomEnumerableProducesRangesWithUniformDistributions()
         {
             var randomSource = new MersenneTwisterRandomSource();
-            double trials = 100000;
+            const double trials = 100000;
 
             var zeroFrequency = Enumerable.Range(0, 10).ToDictionary(x => x, x => 0);
 
@@ -61,7 +59,7 @@ namespace Lospi.Test.Utils.Statistics
 
             var nineFrequency = Enumerable.Range(0, 10).ToDictionary(x => x, x => 0);
 
-            for (int count = 0; count < trials; count++ )
+            for (var count = 0; count < trials; count++ )
             {
                 var result = Lospi.Utils.Statistics.RandomEnumerable.Range(0, 10, randomSource);
 
@@ -72,7 +70,7 @@ namespace Lospi.Test.Utils.Statistics
                 nineFrequency[result[9]]++;
             }
 
-            for (int i = 0; i < 10; i++)
+            for (var i = 0; i < 10; i++)
             {
                 Assert.That(zeroFrequency[i], Is.EqualTo(trials / 10D).Within(10).Percent);
                 Assert.That(fiveFrequency[i], Is.EqualTo(trials / 10D).Within(10).Percent);

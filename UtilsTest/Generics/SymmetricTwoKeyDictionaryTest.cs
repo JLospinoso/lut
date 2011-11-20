@@ -4,112 +4,110 @@
 
 using NUnit.Framework;
 using Lospi.Utils.Generics;
-using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace Lospi.Test.Utils.Generics
 {
     [TestFixture]
     public class SymmetricTwoKeyDictionaryTest
     {
-        SymmetricTwoKeyDictionary<string, int> dict;
+        SymmetricTwoKeyDictionary<string, int> _dictionary;
 
         [SetUp]
         public void TwoKeyDictionaryTestSetUp()
         {
             string[] keys = { "a", "b", "c"};
 
-            dict = new SymmetricTwoKeyDictionary<string, int>(keys);
+            _dictionary = new SymmetricTwoKeyDictionary<string, int>(keys);
 
-            dict["a", "a"] = 1;
-            dict["a", "b"] = 2;
-            dict["a", "c"] = 3;
-            dict["b", "b"] = 4;
-            dict["b", "c"] = 5;
-            dict["c", "c"] = 6;
+            _dictionary["a", "a"] = 1;
+            _dictionary["a", "b"] = 2;
+            _dictionary["a", "c"] = 3;
+            _dictionary["b", "b"] = 4;
+            _dictionary["b", "c"] = 5;
+            _dictionary["c", "c"] = 6;
         }
 
         [TearDown]
         public void TwoKeyDictionaryTestTearDown()
         {
-            dict = null;
+            _dictionary = null;
         }
 
         [Test]
-        public void SymmetricTwoKeyDictionary_Getters_EqualSetters()
+        public void SymmetricTwoKeyDictionaryGettersEqualSetters()
         {
-            Assert.That(dict["a", "a"], Is.EqualTo(1));
-            Assert.That(dict["b", "a"], Is.EqualTo(2));
-            Assert.That(dict["a", "b"], Is.EqualTo(2));
-            Assert.That(dict["a", "c"], Is.EqualTo(3));
-            Assert.That(dict["c", "a"], Is.EqualTo(3));
-            Assert.That(dict["b", "b"], Is.EqualTo(4));
-            Assert.That(dict["b", "c"], Is.EqualTo(5));
-            Assert.That(dict["c", "b"], Is.EqualTo(5));
-            Assert.That(dict["c", "c"], Is.EqualTo(6));
+            Assert.That(_dictionary["a", "a"], Is.EqualTo(1));
+            Assert.That(_dictionary["b", "a"], Is.EqualTo(2));
+            Assert.That(_dictionary["a", "b"], Is.EqualTo(2));
+            Assert.That(_dictionary["a", "c"], Is.EqualTo(3));
+            Assert.That(_dictionary["c", "a"], Is.EqualTo(3));
+            Assert.That(_dictionary["b", "b"], Is.EqualTo(4));
+            Assert.That(_dictionary["b", "c"], Is.EqualTo(5));
+            Assert.That(_dictionary["c", "b"], Is.EqualTo(5));
+            Assert.That(_dictionary["c", "c"], Is.EqualTo(6));
         }
 
         [Test]
-        public void SymmetricTwoKeyDictionary_Marginalizer_Works()
+        public void SymmetricTwoKeyDictionaryMarginalizerWorks()
         {
-            var result = dict["a"];
+            var result = _dictionary["a"];
             Assert.That(result["a"], Is.EqualTo(1));
             Assert.That(result["b"], Is.EqualTo(2));
             Assert.That(result["c"], Is.EqualTo(3));
         }
 
         [Test]
-        public void SymmetricTwoKeyDictionary_AddIndex_Works()
+        public void SymmetricTwoKeyDictionaryAddIndexWorks()
         {
-            dict["d","a"] = 3;
-            Assert.That(dict["a", "d"], Is.EqualTo(3));
-            Assert.That(dict["b", "d"], Is.EqualTo(0));
-            Assert.That(dict["c", "d"], Is.EqualTo(0));
-            Assert.That(dict["d", "d"], Is.EqualTo(0));
+            _dictionary["d","a"] = 3;
+            Assert.That(_dictionary["a", "d"], Is.EqualTo(3));
+            Assert.That(_dictionary["b", "d"], Is.EqualTo(0));
+            Assert.That(_dictionary["c", "d"], Is.EqualTo(0));
+            Assert.That(_dictionary["d", "d"], Is.EqualTo(0));
         }
 
         [Test]
-        public void SymmetricTwoKeyDictionary_AddTwoIndices_Works()
+        public void SymmetricTwoKeyDictionaryAddTwoIndicesWorks()
         {
-            dict["d", "e"] = 5;
-            Assert.That(dict["d", "a"], Is.EqualTo(0));
-            Assert.That(dict["d", "b"], Is.EqualTo(0));
-            Assert.That(dict["d", "c"], Is.EqualTo(0));
-            Assert.That(dict["d", "d"], Is.EqualTo(0));
-            Assert.That(dict["d", "e"], Is.EqualTo(5));
-            Assert.That(dict["e", "a"], Is.EqualTo(0));
-            Assert.That(dict["e", "b"], Is.EqualTo(0));
-            Assert.That(dict["e", "c"], Is.EqualTo(0));
-            Assert.That(dict["e", "d"], Is.EqualTo(5));
-            Assert.That(dict["e", "e"], Is.EqualTo(0));
+            _dictionary["d", "e"] = 5;
+            Assert.That(_dictionary["d", "a"], Is.EqualTo(0));
+            Assert.That(_dictionary["d", "b"], Is.EqualTo(0));
+            Assert.That(_dictionary["d", "c"], Is.EqualTo(0));
+            Assert.That(_dictionary["d", "d"], Is.EqualTo(0));
+            Assert.That(_dictionary["d", "e"], Is.EqualTo(5));
+            Assert.That(_dictionary["e", "a"], Is.EqualTo(0));
+            Assert.That(_dictionary["e", "b"], Is.EqualTo(0));
+            Assert.That(_dictionary["e", "c"], Is.EqualTo(0));
+            Assert.That(_dictionary["e", "d"], Is.EqualTo(5));
+            Assert.That(_dictionary["e", "e"], Is.EqualTo(0));
         }
 
 
         [Test]
-        public void SymmetricTwoKeyDictionary_TryGetValue_ReturnsValue()
+        public void SymmetricTwoKeyDictionaryTryGetValueReturnsValue()
         {
             int result;
 
-            dict.TryGetValue("a", "c", out result);
+            _dictionary.TryGetValue("a", "c", out result);
 
             Assert.That(result, Is.EqualTo(3));
         }
 
         [Test]
-        public void SymmetricTwoKeyDictionary_TryGetValueForInvalidKey_ReturnsDefaultValue()
+        public void SymmetricTwoKeyDictionaryTryGetValueForInvalidKeyReturnsDefaultValue()
         {
             int result;
 
-            dict.TryGetValue("z", "z", out result);
+            _dictionary.TryGetValue("z", "z", out result);
 
             Assert.That(result, Is.EqualTo(0));
         }
 
         [Test]
-        public void SymmetricTwoKeyDictionary_Keys_GivesAllKeyPairings()
+        public void SymmetricTwoKeyDictionaryKeysGivesAllKeyPairings()
         {
-            var keys = dict.Keys.ToList();
+            var keys = _dictionary.Keys.ToList();
 
             Assert.That(keys, Contains.Item("a"));
             Assert.That(keys, Contains.Item("b"));
@@ -118,9 +116,9 @@ namespace Lospi.Test.Utils.Generics
         }
 
         [Test]
-        public void SymmetricTwoKeyDictionary_Values_GivesAllValues()
+        public void SymmetricTwoKeyDictionaryValuesGivesAllValues()
         {
-            var values = dict.Values.ToList();
+            var values = _dictionary.Values.ToList();
 
             Assert.That(values, Contains.Item(1));
             Assert.That(values, Contains.Item(2));

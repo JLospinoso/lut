@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-/*
+﻿/*
  * Copyright © 2011, Joshua A. Lospinoso (josh@lospi.net). All rights reserved.
  */
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 
 namespace Lospi.Utils.Generics
 {
@@ -50,8 +51,10 @@ namespace Lospi.Utils.Generics
         /// <summary>
         /// Returns a random key with probability given by its Value.
         /// </summary>
-        /// <typeparam networkName="To">Some key type</typeparam>
+        /// <typeparam name="T">Type of the key</typeparam>
         /// <param networkName="dictionary">Extension method on dictionary</param>
+        /// <param name="dictionary">A dictionary</param>
+        /// <param name="randomNumber">A random double</param>
         /// <returns>A random key</returns>
         public static T RandomKey<T>(this IDictionary<T, double> dictionary, double randomNumber)
         {

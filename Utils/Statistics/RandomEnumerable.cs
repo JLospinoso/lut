@@ -1,7 +1,10 @@
-﻿using System;
+﻿/*
+ * Copyright © 2011, Joshua A. Lospinoso (josh@lospi.net). All rights reserved.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using MathNet.Numerics.RandomSources;
 
 namespace Lospi.Utils.Statistics
@@ -30,7 +33,7 @@ namespace Lospi.Utils.Statistics
         /// Produces a contiguous sequence if integer values
         /// </summary>
         /// <param name="start">Start value, inclusive</param>
-        /// <param name="end">Number of values to produce</param>
+        /// <param name="count">Number of values to produce</param>
         /// <param name="random">A random source</param>
         /// <returns></returns>
         public static IList<int> Range(int start, int count, RandomSource random)

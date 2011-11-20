@@ -7,18 +7,18 @@ using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace Lospi.Test.Utils.Generic
+namespace Lospi.Test.Utils.Generics
 {
     [TestFixture]
     public class StatisticalExtensionMethodsTest
     {
-        double[] values = { -4D, 4D, -4D, 4D };
+        readonly double[] _values = { -4D, 4D, -4D, 4D };
 
 
         [Test]
         public void RandomKeyTest()
         {
-            Random rng = new Random();
+            var rng = new Random();
             IDictionary<String, Double> dictionary = new Dictionary<string, double>();
 
             dictionary["one"] = 2.0 / 3.0;
@@ -40,22 +40,22 @@ namespace Lospi.Test.Utils.Generic
         [Test]
         public void StandardDeviationTest()
         {
-            ICollection<double> x = new List<double>(values);
-            bool sample = false;
-            double expected = 2F;
-            double actual;
-            actual = ExtensionMethods.StandardDeviation(x, sample);
+            ICollection<double> collection = new List<double>(_values);
+            const bool sample = false;
+            const float expected = 2F;
+            var actual = collection.StandardDeviation(sample);
+
             Assert.That(expected, Is.EqualTo(actual));
         }
 
         [Test]
         public void VarianceTest()
         {
-            ICollection<double> x = new List<double>(values);
-            bool sample = false;
-            double expected = 16F;
-            double actual;
-            actual = ExtensionMethods.Variance(x, sample);
+            ICollection<double> x = new List<double>(_values);
+            const bool sample = false;
+            const double expected = 16F;
+            var actual = x.Variance(sample);
+
             Assert.That(expected, Is.EqualTo(actual));
         }
     }

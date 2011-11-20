@@ -2,12 +2,8 @@
  * Copyright © 2011, Joshua A. Lospinoso (josh@lospi.net). All rights reserved.
  */
 
-using System;
-using System.Linq;
-using System.Text;
 using System.Collections.Generic;
-using MathNet.Numerics;
-using MathNet.Numerics.Distributions;
+using System.Linq;
 
 namespace Lospi.Utils.Generics
 {
@@ -16,16 +12,13 @@ namespace Lospi.Utils.Generics
         /// <summary>
         /// Aids in deep copying collections of objects
         /// </summary>
-        /// <typeparam name="To">A deep copyable type</typeparam>
+        /// <typeparam name="T">A deep copyable type</typeparam>
         /// <param name="deepCopyable">A deepCopyable</param>
         /// <returns>A deep copy of the deepCopyable</returns>
         public static IEnumerable<T> DeepMemberwiseCopy<T>(this IEnumerable<T> deepCopyable)
             where T : IDeepCopyable<T>
         {
-            foreach (T item in deepCopyable)
-            {
-                yield return item.DeepCopy();
-            }
+            return deepCopyable.Select(item => item.DeepCopy());
         }
     }
 }

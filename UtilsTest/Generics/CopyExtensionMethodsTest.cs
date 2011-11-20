@@ -2,13 +2,11 @@
  * Copyright © 2011, Joshua A. Lospinoso (josh@lospi.net). All rights reserved.
  */
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using NUnit.Framework;
 using Lospi.Utils;
 using Lospi.Utils.Generics;
+using NUnit.Framework;
 
 namespace Lospi.Test.Utils.Generics
 {
@@ -21,15 +19,15 @@ namespace Lospi.Test.Utils.Generics
 
             public TestCopyValue DeepCopy()
             {
-                return new TestCopyValue { Value = this.Value };
+                return new TestCopyValue { Value = Value };
             }
         }
 
         [Test]
-        public void DeepMemberwiseCopy_OfTestCopyValue_ContainsIdenticalValues()
+        public void DeepMemberwiseCopyOfTestCopyValueContainsIdenticalValues()
         {
             IList<TestCopyValue> baseList = new List<TestCopyValue>();
-            int count = 10;
+            const int count = 10;
 
             for (int i = 0; i < count; i++)
             {
@@ -45,24 +43,24 @@ namespace Lospi.Test.Utils.Generics
         }
 
         [Test]
-        public void DeepMemberwiseCopy_OfTestCopyValue_IsIndependent()
+        public void DeepMemberwiseCopyOfTestCopyValueIsIndependent()
         {
             IList<TestCopyValue> baseList = new List<TestCopyValue>();
-            int count = 10;
+            const int count = 10;
 
-            for (int i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
                 baseList.Add(new TestCopyValue { Value = i.ToString() });
             }
 
             IList<TestCopyValue> deepCopy = baseList.DeepMemberwiseCopy().ToList();
 
-            for (int i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
                 baseList[i].Value = "CLEARED";
             }
 
-            for (int i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
                 Assert.That(baseList[i].Value, Is.Not.EqualTo(deepCopy[i].Value));
             }

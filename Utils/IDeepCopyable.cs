@@ -2,11 +2,6 @@
  * Copyright © 2011, Joshua A. Lospinoso (josh@lospi.net). All rights reserved.
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Lospi.Utils
 {
     /// <summary>
@@ -14,7 +9,7 @@ namespace Lospi.Utils
     /// This is useful for multithreaded applications for task local storage.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IDeepCopyable<T>
+    public interface IDeepCopyable<out T>
     {
         /// <summary>
         /// Provides a deep copy.
