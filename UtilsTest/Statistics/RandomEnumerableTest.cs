@@ -4,7 +4,7 @@
 
 using System;
 using System.Linq;
-using MathNet.Numerics.RandomSources;
+using MathNet.Numerics.Random;
 using NUnit.Framework;
 
 namespace Lospi.Test.Utils.Statistics
@@ -16,7 +16,7 @@ namespace Lospi.Test.Utils.Statistics
         [ExpectedException(typeof(ArgumentException))]
         public void RandomEnumerableProducesErrorForIllegalArgumentsOnRanges()
         {
-            var randomSource = new MersenneTwisterRandomSource();
+            var randomSource = new MersenneTwister();
             Lospi.Utils.Statistics.RandomEnumerable.Range(11, -1, randomSource);
         }
 
@@ -24,7 +24,7 @@ namespace Lospi.Test.Utils.Statistics
         [ExpectedException(typeof(ArgumentException))]
         public void RandomEnumerableProducesErrorForIllegalArgumentsOnFroms()
         {
-            var randomSource = new MersenneTwisterRandomSource();
+            var randomSource = new MersenneTwister();
             Lospi.Utils.Statistics.RandomEnumerable.From(-4, -5, randomSource);
         }
 
@@ -34,7 +34,7 @@ namespace Lospi.Test.Utils.Statistics
         [TestCase(3, 3)]
         public void RandomEnumerableProducesRangesContainingWholeEnumeration(int start, int end)
         {
-            var randomSource = new MersenneTwisterRandomSource();
+            var randomSource = new MersenneTwister();
             int trials = 1000;
 
             while (trials-- > 0)
@@ -50,7 +50,7 @@ namespace Lospi.Test.Utils.Statistics
         [Test]
         public void RandomEnumerableProducesRangesWithUniformDistributions()
         {
-            var randomSource = new MersenneTwisterRandomSource();
+            var randomSource = new MersenneTwister();
             const double trials = 100000;
 
             var zeroFrequency = Enumerable.Range(0, 10).ToDictionary(x => x, x => 0);

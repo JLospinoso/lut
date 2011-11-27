@@ -82,7 +82,7 @@ namespace Lospi.Utils.Generics
         /// <returns></returns>
         public static IDictionary<Double, Double> Normalize(this IList<Double> list, double mean=0, double stdev=1)
         {
-            var normal = new NormalDistribution(mean, stdev);
+            var normal = new Normal(mean, stdev);
             return list.Percentile(true).ToDictionary( x => x.Key, x => normal.InverseCumulativeDistribution(x.Value) );
         }
 

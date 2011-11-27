@@ -5,7 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MathNet.Numerics.RandomSources;
+using MathNet.Numerics.Random;
 
 namespace Lospi.Utils.Statistics
 {
@@ -18,7 +18,7 @@ namespace Lospi.Utils.Statistics
         /// <param name="end">Ending value, inclusive</param>
         /// <param name="random">A random source</param>
         /// <returns></returns>
-        public static IList<int> From(int start, int end, RandomSource random)
+        public static IList<int> From(int start, int end, AbstractRandomNumberGenerator random)
         {
             if (end < start)
             {
@@ -36,7 +36,7 @@ namespace Lospi.Utils.Statistics
         /// <param name="count">Number of values to produce</param>
         /// <param name="random">A random source</param>
         /// <returns></returns>
-        public static IList<int> Range(int start, int count, RandomSource random)
+        public static IList<int> Range(int start, int count, AbstractRandomNumberGenerator random)
         {
             if (count < 0)
             {
@@ -46,9 +46,9 @@ namespace Lospi.Utils.Statistics
 
             var result = Enumerable.Range(start, count).ToList();
 
-            for (int i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
-                int newPosition = random.Next(0, count);
+                var newPosition = random.Next(0, count);
 
                 var displacedValue = result[newPosition];
 
@@ -57,9 +57,9 @@ namespace Lospi.Utils.Statistics
                 result[i] = displacedValue;
             }
 
-            for (int i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
-                int newPosition = random.Next(0, count);
+                var newPosition = random.Next(0, count);
 
                 var displacedValue = result[newPosition];
 
