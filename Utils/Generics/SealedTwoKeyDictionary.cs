@@ -17,6 +17,7 @@ namespace Lospi.Utils.Generics
     /// <typeparam name="TK1">The type of key 1</typeparam>
     /// <typeparam name="TK2">The type of key 2</typeparam>
     /// <typeparam name="TV">The type of the value</typeparam>
+    [Serializable]
     public class SealedTwoKeyDictionary<TK1, TK2, TV> : ITwoKeyDictionary<TK1, TK2, TV>
     {
         /// <summary>

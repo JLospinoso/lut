@@ -15,6 +15,7 @@ namespace Lospi.Utils.Generics
     /// </summary>
     /// <typeparam name="TK"></typeparam>
     /// <typeparam name="TV"></typeparam>
+    [Serializable]
     public class SealedSymmetricTwoKeyDictionary<TK, TV> : ISymmetricTwoKeyDictionary<TK, TV>
     {
         /// <summary>

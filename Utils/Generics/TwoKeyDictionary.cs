@@ -16,6 +16,7 @@ namespace Lospi.Utils.Generics
     /// <typeparam name="TK1">The type of key 1</typeparam>
     /// <typeparam name="TK2">The type of key 2</typeparam>
     /// <typeparam name="TV">The type of the value</typeparam>
+    [Serializable]
     public class TwoKeyDictionary<TK1, TK2, TV> : ITwoKeyDictionary<TK1, TK2, TV>
     {
         /// <summary>
@@ -24,14 +25,14 @@ namespace Lospi.Utils.Generics
         readonly Dictionary<TK1, Dictionary<TK2, TV>> _internal;
 
         /// <summary>
-        /// A deepCopyable of all key 1 values
+        /// A collection of all key 1 values
         /// </summary>
-        protected ICollection<TK1> FirstKey { get; set; }
+        public ICollection<TK1> FirstKey { get; protected set; }
 
         /// <summary>
-        /// A deepCopyable of all key 2 values
+        /// A collection of all key 2 values
         /// </summary>
-        protected ICollection<TK2> SecondKey { get; set; }
+        public ICollection<TK2> SecondKey { get; protected set; }
 
         /// <summary>
         /// Default constructor
@@ -134,6 +135,25 @@ namespace Lospi.Utils.Generics
             {
                 CheckIndicesAndExpand(key1, key2);
                 _internal[key1][key2] = value;
+            }
+        }
+
+
+        /// <summary>
+        /// A convenient getter and setter
+        /// </summary>
+        /// <param name="key">The key as a tuple</param>
+        /// <returns>The corresponding value</returns>
+        public TV this[ Tuple<TK1, TK2> key]
+        {
+            get
+            {
+                return _internal[key.Item1][key.Item2];
+            }
+            set
+            {
+                CheckIndicesAndExpand(key.Item1, key.Item2);
+                _internal[key.Item1][key.Item2] = value;
             }
         }
 
